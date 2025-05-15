@@ -112,7 +112,7 @@ const questions = [
         correctAnswer: 0,
         type: "multiple",
         hasImage: true,
-        imageUrl: "net1.png",
+        imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG",
         imageAlt: "صورة توضح واجهات Router0"
     },
     {
