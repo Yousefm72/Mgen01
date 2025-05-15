@@ -8,7 +8,8 @@ const questions = [
             "SMTP"
         ],
         correctAnswer: 2, // TCP/IP
-        type: "multiple"
+        type: "multiple",
+        hasImage: false
     },
     {
         question: "أقوال تتطرّق إلى عنوان الـ IP التالي: 172.10.10.10/16",
@@ -19,7 +20,8 @@ const questions = [
             "هو عنوان عام من الفئة B"
         ],
         correctAnswer: 0, // هو عنوان خاص من الفئة B
-        type: "multiple"
+        type: "multiple",
+        hasImage: false
     },
     {
         question: "أيّ عنوان من بين العناوين التالية هو عنوان APIPA",
@@ -30,7 +32,8 @@ const questions = [
             "10.0.0.1"
         ],
         correctAnswer: 1, // 169.254.1.1
-        type: "multiple"
+        type: "multiple",
+        hasImage: false
     },
     {
         question: "الرسالة التي يقوم ببثها الحاسوب الخادم DHCP للحصول على عنوان هي",
@@ -95,6 +98,92 @@ const questions = [
         options: ["show ports", "show interfaces", "display ports", "port status"],
         correctAnswer: 1,
         type: "multiple"
+    },
+    
+    
+    {
+        question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet 0/0 في Router0 كما هو موضح في الصورة؟",
+        options: [
+            "interface GigabitEthernet 0/0",
+            "interface Gig0/0",
+            "config GigabitEthernet 0/0",
+            "router GigabitEthernet 0/0"
+        ],
+        correctAnswer: 0,
+        type: "multiple",
+        hasImage: true,
+        imageUrl: "net1.png",
+        imageAlt: "صورة توضح واجهات Router0"
+    },
+    {
+        question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet 0/1 في Router1 كما هو موضح في الصورة؟",
+        options: [
+            "interface GigabitEthernet 0/1",
+            "interface Gig0/1",
+            "config GigabitEthernet 0/1",
+            "router GigabitEthernet 0/1"
+        ],
+        correctAnswer: 0,
+        type: "multiple",
+        hasImage: true,
+        imageUrl: "net1.png",
+        imageAlt: "صورة توضح واجهات Router1"
+    },
+    {
+        question: "ما هو الأمر الصحيح لعرض حالة واجهات GigabitEthernet في Router0 كما هو موضح في الصورة؟",
+        options: [
+            "show interfaces GigabitEthernet 0/0",
+            "display GigabitEthernet 0/0",
+            "show Gig0/0 status",
+            "interface GigabitEthernet 0/0 status"
+        ],
+        correctAnswer: 0,
+        type: "multiple",
+        hasImage: true,
+        imageUrl: "net1.png",
+        imageAlt: "صورة توضح حالة واجهات Router0"
+    },
+    {
+        question: "ما هو الأمر الصحيح لتعريف عنوان IP لواجهة GigabitEthernet 0/0 في Router0 كما هو موضح في الصورة؟",
+        options: [
+            "ip address 192.168.1.1 255.255.255.0",
+            "set ip GigabitEthernet 0/0 192.168.1.1/24",
+            "address ip 192.168.1.1 mask 255.255.255.0",
+            "configure ip GigabitEthernet 0/0 192.168.1.1 24"
+        ],
+        correctAnswer: 0,
+        type: "multiple",
+        hasImage: true,
+        imageUrl: "net1.png",
+        imageAlt: "صورة توضح إعدادات IP في Router0"
+    },
+    {
+        question: "ما هو الأمر الصحيح لتفعيل واجهة GigabitEthernet 0/1 في Router1 كما هو موضح في الصورة؟",
+        options: [
+            "no shutdown",
+            "enable interface",
+            "interface up",
+            "activate GigabitEthernet 0/1"
+        ],
+        correctAnswer: 0,
+        type: "multiple",
+        hasImage: true,
+        imageUrl: "net1.png",
+        imageAlt: "صورة توضح تفعيل واجهة Router1"
+    },
+    {
+        question: "ما هو الأمر الصحيح لعرض جدول التوجيه في Router0 كما هو موضح في الصورة؟",
+        options: [
+            "show ip route",
+            "display routing table",
+            "show route",
+            "route table"
+        ],
+        correctAnswer: 0,
+        type: "multiple",
+        hasImage: true,
+        imageUrl: "net1.png",
+        imageAlt: "صورة توضح جدول التوجيه في Router0"
     }
 ];
 
@@ -112,6 +201,29 @@ function createQuiz() {
         const questionTitle = document.createElement('h3');
         questionTitle.textContent = `${index + 1}. ${q.question}`;
         questionDiv.appendChild(questionTitle);
+        
+        // Add image if the question has one
+        if (q.hasImage && q.imageUrl) {
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'question-image';
+            
+            const image = document.createElement('img');
+            image.src = q.imageUrl;
+            image.alt = q.imageAlt || 'صورة السؤال';
+            image.className = 'quiz-image';
+            
+            // Add error handling for images
+            image.onerror = function() {
+                this.style.display = 'none';
+                const errorMessage = document.createElement('p');
+                errorMessage.className = 'image-error';
+                errorMessage.textContent = 'لم يتم العثور على الصورة';
+                imageContainer.appendChild(errorMessage);
+            };
+            
+            imageContainer.appendChild(image);
+            questionDiv.appendChild(imageContainer);
+        }
         
         const optionsDiv = document.createElement('div');
         optionsDiv.className = 'options';

@@ -142,4 +142,28 @@ button:hover {
     .option {
         padding: 0.8rem;
     }
+}
+
+.question-image {
+    margin: 1rem 0;
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.quiz-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-error {
+    color: #ea4335;
+    padding: 1rem;
+    background-color: #fce8e6;
+    border-radius: 4px;
+    margin: 0.5rem 0;
 } 
