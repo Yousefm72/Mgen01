@@ -126,7 +126,7 @@ const questions = [
         correctAnswer: 0,
         type: "multiple",
         hasImage: true,
-        imageUrl: "net1.png",
+        imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG",
         imageAlt: "صورة توضح واجهات Router1"
     },
     {
@@ -140,7 +140,7 @@ const questions = [
         correctAnswer: 0,
         type: "multiple",
         hasImage: true,
-        imageUrl: "net1.png",
+        imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG",
         imageAlt: "صورة توضح حالة واجهات Router0"
     },
     {
@@ -154,7 +154,7 @@ const questions = [
         correctAnswer: 0,
         type: "multiple",
         hasImage: true,
-        imageUrl: "net1.png",
+        imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG",
         imageAlt: "صورة توضح إعدادات IP في Router0"
     },
     {
@@ -168,7 +168,7 @@ const questions = [
         correctAnswer: 0,
         type: "multiple",
         hasImage: true,
-        imageUrl: "net1.png",
+        imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG",
         imageAlt: "صورة توضح تفعيل واجهة Router1"
     },
     {
@@ -182,7 +182,7 @@ const questions = [
         correctAnswer: 0,
         type: "multiple",
         hasImage: true,
-        imageUrl: "net1.png",
+        imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG",
         imageAlt: "صورة توضح جدول التوجيه في Router0"
     }
 ];
