@@ -9,7 +9,7 @@ const questions = [
         ],
         correctAnswer: 2, // TCP/IP
         type: "multiple",
-        hasImage: false
+        hasImage: falseg
     },
     {
         question: "أقوال تتطرّق إلى عنوان الـ IP التالي: 172.10.10.10/16",
@@ -19,7 +19,7 @@ const questions = [
             "هو عنوان خاص من الفئة A",
             "هو عنوان عام من الفئة B"
         ],
-        correctAnswer: 0, // هو عنوان خاص من الفئة B
+        correctAnswer: 3, // هو عنوان عام من الفئة B
         type: "multiple",
         hasImage: false
     },
@@ -53,7 +53,7 @@ const questions = [
         type: "multiple"
     },
     {
-        question: "ما هو البروتوكول الذي يمكن توجيه رزم معطيات بين شبكات مختلفة؟",
+        question: "ما هو البروتوكول الذي يمكن توجيه رزم بيانات بين شبكات مختلفة؟",
         options: ["HTTP", "FTP", "IP", "SMTP"],
         correctAnswer: 2,
         type: "multiple"
@@ -102,7 +102,7 @@ const questions = [
     
     
     {
-        question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet 0/0 في Router0 كما هو موضح في الصورة؟",
+        question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet0/0 في Router0 كما هو موضح في الصورة؟",
         options: [
             "interface GigabitEthernet 0/0",
             "interface Gig0/0",
@@ -130,7 +130,7 @@ const questions = [
         imageAlt: "صورة توضح واجهات Router1"
     },
     {
-        question: "ما هو الأمر الصحيح لعرض حالة واجهات GigabitEthernet في Router0 كما هو موضح في الصورة؟",
+        question: "ما هو الأمر الصحيح لعرض حالة واجهة GigabitEthernet0/0 في Router0 كما هو موضح في الصورة؟",
         options: [
             "show interfaces GigabitEthernet 0/0",
             "display GigabitEthernet 0/0",
