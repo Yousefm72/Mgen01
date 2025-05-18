@@ -9,7 +9,7 @@ const questions = [
         ],
         correctAnswer: 2, // TCP/IP
         type: "multiple",
-        hasImage: false
+        hasImage: falseg
     },
     {
         question: "أقوال تتطرّق إلى عنوان الـ IP التالي: 172.10.10.10/16",
