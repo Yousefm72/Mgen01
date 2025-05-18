@@ -9,8 +9,7 @@ const questions = [
         ],
         correctAnswer: 2, // TCP/IP
         type: "multiple",
-        hasImage: false,
-        comment: "TCP/IP هو البروتوكول الرئيسي للإنترنت لأنه يوفر الاتصال والتوجيه بين الأجهزة"
+        hasImage: false
     },
     {
         question: "أقوال تتطرّق إلى عنوان الـ IP التالي: 172.10.10.10/16",
@@ -20,7 +19,7 @@ const questions = [
             "هو عنوان عام من الفئة A",
             "هو عنوان خاص من الفئة A"
         ],
-        correctAnswer: 0, // هو عنوان عام من الفئة B
+        correctAnswer: 0, // هو عنوان خاص من الفئة B
         type: "multiple",
         hasImage: false,
         comment: "العنوان 172.10.x.x يقع ضمن نطاق الفئة B (128-191) وهو عنوان عام لأنه خارج نطاق العناوين الخاصة (172.16.0.0 - 172.31.255.255)"
@@ -104,7 +103,7 @@ const questions = [
     
     
     {
-        question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet 0/0 في Router0 كما هو موضح في الصورة؟",
+        question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet0/0 في Router0 كما هو موضح في الصورة؟",
         options: [
             "interface GigabitEthernet 0/0",
             "interface Gig0/0",
@@ -132,7 +131,7 @@ const questions = [
         imageAlt: "صورة توضح واجهات Router1"
     },
     {
-        question: "ما هو الأمر الصحيح لعرض حالة واجهات GigabitEthernet0/0 في Router0 كما هو موضح في الصورة؟",
+        question: "ما هو الأمر الصحيح لعرض حالة واجهات GigabitEthernet في Router0 كما هو موضح في الصورة؟",
         options: [
             "show interfaces GigabitEthernet 0/0",
             "display GigabitEthernet 0/0",
