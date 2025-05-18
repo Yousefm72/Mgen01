@@ -9,19 +9,21 @@ const questions = [
         ],
         correctAnswer: 2, // TCP/IP
         type: "multiple",
-        hasImage: false
+        hasImage: false,
+        comment: "TCP/IP هو البروتوكول الرئيسي للإنترنت لأنه يوفر الاتصال والتوجيه بين الأجهزة"
     },
     {
         question: "أقوال تتطرّق إلى عنوان الـ IP التالي: 172.10.10.10/16",
         options: [
-            "هو عنوان خاص من الفئة B",
+            "هو عنوان عام من الفئة B",
+            "هو عنوان خاص من الفئة B",   
             "هو عنوان عام من الفئة A",
-            "هو عنوان خاص من الفئة A",
-            "هو عنوان عام من الفئة B"
+            "هو عنوان خاص من الفئة A"
         ],
-        correctAnswer: 0, // هو عنوان خاص من الفئة B
+        correctAnswer: 0, // هو عنوان عام من الفئة B
         type: "multiple",
-        hasImage: false
+        hasImage: false,
+        comment: "العنوان 172.10.x.x يقع ضمن نطاق الفئة B (128-191) وهو عنوان عام لأنه خارج نطاق العناوين الخاصة (172.16.0.0 - 172.31.255.255)"
     },
     {
         question: "أيّ عنوان من بين العناوين التالية هو عنوان APIPA",
@@ -53,7 +55,7 @@ const questions = [
         type: "multiple"
     },
     {
-        question: "ما هو البروتوكول الذي يمكن توجيه رزم معطيات بين شبكات مختلفة؟",
+        question: "ما هو البروتوكول الذي يمكن توجيه رزم بيانات بين شبكات مختلفة؟",
         options: ["HTTP", "FTP", "IP", "SMTP"],
         correctAnswer: 2,
         type: "multiple"
@@ -130,7 +132,7 @@ const questions = [
         imageAlt: "صورة توضح واجهات Router1"
     },
     {
-        question: "ما هو الأمر الصحيح لعرض حالة واجهات GigabitEthernet في Router0 كما هو موضح في الصورة؟",
+        question: "ما هو الأمر الصحيح لعرض حالة واجهات GigabitEthernet0/0 في Router0 كما هو موضح في الصورة؟",
         options: [
             "show interfaces GigabitEthernet 0/0",
             "display GigabitEthernet 0/0",
@@ -347,7 +349,7 @@ const questions = [
         hasImage: false
     },
     {
-        question: "ما هو رقم المنفذ (Port) المستخدم لبروتوكول FTP؟",
+        question: "ما هو رقم المنفذ (Port الافتراضي ) المستخدم لبروتوكول FTP؟",
         options: ["20", "21", "22", "23"],
         correctAnswer: 1, // 21
         type: "multiple",
@@ -417,7 +419,7 @@ const questions = [
         hasImage: false
     },
     {
-        question: "ما هو رقم المنفذ (Port) المستخدم لبروتوكول SNMP؟",
+        question: "ما هو رقم المنفذ (Port الافتراضي ) المستخدم لبروتوكول SNMP؟",
         options: ["161", "162", "143", "110"],
         correctAnswer: 0, // 161
         type: "multiple",
@@ -431,7 +433,7 @@ const questions = [
         hasImage: false
     },
     {
-        question: "ما هو رقم المنفذ (Port) المستخدم لبروتوكول POP3؟",
+        question: "ما هو رقم المنفذ (Port الافتراضي ) المستخدم لبروتوكول POP3؟",
         options: ["110", "143", "25", "80"],
         correctAnswer: 0, // 110
         type: "multiple",
@@ -445,7 +447,7 @@ const questions = [
         hasImage: false
     },
     {
-        question: "ما هو رقم المنفذ (Port) المستخدم لبروتوكول IMAP؟",
+        question: "ما هو رقم المنفذ (Port الافتراضي ) المستخدم لبروتوكول IMAP؟",
         options: ["110", "143", "25", "80"],
         correctAnswer: 1, // 143
         type: "multiple",
@@ -543,7 +545,14 @@ function showFeedback(questionIndex, selectedAnswer) {
     const isCorrect = selectedAnswer === questions[questionIndex].correctAnswer;
     userFeedback[questionIndex] = isCorrect;
     
-    feedbackDiv.textContent = isCorrect ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة';
+    let feedbackText = isCorrect ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة';
+    
+    // Add comment if available
+    if (questions[questionIndex].comment) {
+        feedbackText += `<br><div class="comment">💡 ${questions[questionIndex].comment}</div>`;
+    }
+    
+    feedbackDiv.innerHTML = feedbackText;
     feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
     
     // Update score

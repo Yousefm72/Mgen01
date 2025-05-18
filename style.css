@@ -166,4 +166,22 @@ button:hover {
     background-color: #fce8e6;
     border-radius: 4px;
     margin: 0.5rem 0;
+}
+
+.comment {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-right: 3px solid #1a73e8;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.incorrect .comment {
+    border-right-color: #ea4335;
+}
+
+.correct .comment {
+    border-right-color: #34a853;
 } 
