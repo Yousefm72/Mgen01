@@ -1,18 +1,6 @@
 const questions = [
     // مجموعة 1: أساسيات الشبكات والبروتوكولات
-    {
-        question: "أي من البروتوكولات التالية يعتبر بروتوكولاً رئيسياً في الإنترنت؟ (يمكن اختيار أكثر من إجابة)",
-        options: [
-            "HTTP",
-            "FTP",
-            "TCP/IP",
-            "SMTP"
-        ],
-        correctAnswers: [0, 2],
-        type: "multiple",
-        hasImage: false,
-        allowMultiple: true
-    },
+    
     {
         question: "ما هو البروتوكول الذي يمكن توجيه رزم بيانات بين شبكات مختلفة؟",
         options: ["HTTP", "FTP", "IP", "SMTP"],
