@@ -1,15 +1,16 @@
 const questions = [
     {
-        question: "أي من البروتوكولات التالية يعتبر بروتوكولاً رئيسياً في الإنترنت؟",
+        question: "أي من البروتوكولات التالية يعتبر بروتوكولاً رئيسياً في الإنترنت؟ (يمكن اختيار أكثر من إجابة)",
         options: [
             "HTTP",
             "FTP",
             "TCP/IP",
             "SMTP"
         ],
-        correctAnswer: 2, // TCP/IP
+        correctAnswers: [0, 2],
         type: "multiple",
-        hasImage: false
+        hasImage: false,
+        allowMultiple: true
     },
     {
         question: "أقوال تتطرّق إلى عنوان الـ IP التالي: 172.10.10.10/16",
@@ -19,10 +20,9 @@ const questions = [
             "هو عنوان عام من الفئة A",
             "هو عنوان خاص من الفئة A"
         ],
-        correctAnswer: 0, // هو عنوان خاص من الفئة B
+        correctAnswer: 0,
         type: "multiple",
-        hasImage: false,
-        comment: "العنوان 172.10.x.x يقع ضمن نطاق الفئة B (128-191) وهو عنوان عام لأنه خارج نطاق العناوين الخاصة (172.16.0.0 - 172.31.255.255)"
+        hasImage: false
     },
     {
         question: "أيّ عنوان من بين العناوين التالية هو عنوان APIPA",
@@ -32,7 +32,7 @@ const questions = [
             "172.16.1.1",
             "10.0.0.1"
         ],
-        correctAnswer: 1, // 169.254.1.1
+        correctAnswer: 1,
         type: "multiple",
         hasImage: false
     },
@@ -42,17 +42,7 @@ const questions = [
         correctAnswer: 0,
         type: "multiple"
     },
-    {
-        question: "ما هو الأمر الصحيح لتعريف الواجهة Gig0/0 في الراوتر؟",
-        options: [
-            "interface GigabitEthernet 0/0",
-            "interface Gig0/0",
-            "config Gig0/0",
-            "router Gig0/0"
-        ],
-        correctAnswer: 0,
-        type: "multiple"
-    },
+   
     {
         question: "ما هو البروتوكول الذي يمكن توجيه رزم بيانات بين شبكات مختلفة؟",
         options: ["HTTP", "FTP", "IP", "SMTP"],
@@ -102,20 +92,7 @@ const questions = [
     },
     
     
-    {
-        question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet0/0 في Router0 كما هو موضح في الصورة؟",
-        options: [
-            "interface GigabitEthernet 0/0",
-            "interface Gig0/0",
-            "config GigabitEthernet 0/0",
-            "router GigabitEthernet 0/0"
-        ],
-        correctAnswer: 0,
-        type: "multiple",
-        hasImage: true,
-        imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG?raw=true",
-        imageAlt: "صورة توضح واجهات Router0"
-    },
+    
     {
         question: "ما هو الأمر الصحيح لتعريف واجهة GigabitEthernet 0/1 في Router1 كما هو موضح في الصورة؟",
         options: [
@@ -451,6 +428,18 @@ const questions = [
         correctAnswer: 1, // 143
         type: "multiple",
         hasImage: false
+    },
+    {
+        question: "ما هو الأمر الصحيح لتعريف الواجهة Gig0/0 في الراوتر؟",
+        options: [
+            "interface GigabitEthernet 0/0",
+            "interface Gig0/1",
+            "config GigabitEthernet 0/0",
+            "router GigabitEthernet 0/0"
+        ],
+        correctAnswer: 0,
+        type: "multiple",
+        hasImage: false
     }
 ];
 
@@ -460,7 +449,6 @@ let userFeedback = new Array(questions.length).fill(null);
 function createQuiz() {
     const questionsContainer = document.getElementById('questions');
     questionsContainer.innerHTML = '';
-    imageUrl: "https://github.com/Yousefm72/Mgen01/blob/main/net1.PNG?raw=true",
 
     questions.forEach((q, index) => {
         const questionDiv = document.createElement('div');
@@ -480,7 +468,6 @@ function createQuiz() {
             image.alt = q.imageAlt || 'صورة السؤال';
             image.className = 'quiz-image';
             
-            // Add error handling for images
             image.onerror = function() {
                 this.style.display = 'none';
                 const errorMessage = document.createElement('p');
@@ -495,6 +482,11 @@ function createQuiz() {
         
         const optionsDiv = document.createElement('div');
         optionsDiv.className = 'options';
+        
+        // Initialize currentAnswers as an array for multiple choice questions
+        if (q.allowMultiple) {
+            currentAnswers[index] = [];
+        }
         
         q.options.forEach((option, optionIndex) => {
             const optionDiv = document.createElement('div');
@@ -511,19 +503,27 @@ function createQuiz() {
             optionDiv.addEventListener('click', () => {
                 if (userFeedback[index] !== null) return; // Prevent changing answer after feedback
                 
-                // Remove selected class from all options in this question
-                optionsDiv.querySelectorAll('.option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                // Add selected class to clicked option
-                optionDiv.classList.add('selected');
-                
-                // Store the answer
-                currentAnswers[index] = optionIndex;
+                if (q.allowMultiple) {
+                    // Toggle selection for multiple choice
+                    const selectedIndex = currentAnswers[index].indexOf(optionIndex);
+                    if (selectedIndex === -1) {
+                        currentAnswers[index].push(optionIndex);
+                        optionDiv.classList.add('selected');
+                    } else {
+                        currentAnswers[index].splice(selectedIndex, 1);
+                        optionDiv.classList.remove('selected');
+                    }
+                } else {
+                    // Single choice behavior
+                    optionsDiv.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    optionDiv.classList.add('selected');
+                    currentAnswers[index] = optionIndex;
+                }
                 
                 // Show immediate feedback
-                showFeedback(index, optionIndex);
+                showFeedback(index);
             });
             
             optionsDiv.appendChild(optionDiv);
@@ -539,16 +539,30 @@ function createQuiz() {
     });
 }
 
-function showFeedback(questionIndex, selectedAnswer) {
+function showFeedback(questionIndex) {
     const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
-    const isCorrect = selectedAnswer === questions[questionIndex].correctAnswer;
+    const question = questions[questionIndex];
+    
+    let isCorrect;
+    if (question.allowMultiple) {
+        // For multiple choice questions, check if all correct answers are selected and no incorrect ones
+        const selectedAnswers = currentAnswers[questionIndex] || [];
+        const correctAnswers = question.correctAnswers || [question.correctAnswer];
+        
+        isCorrect = correctAnswers.length === selectedAnswers.length &&
+                   correctAnswers.every(answer => selectedAnswers.includes(answer));
+    } else {
+        // For single choice questions
+        isCorrect = currentAnswers[questionIndex] === question.correctAnswer;
+    }
+    
     userFeedback[questionIndex] = isCorrect;
     
     let feedbackText = isCorrect ? '✓ إجابة صحيحة' : '✗ إجابة خاطئة';
     
     // Add comment if available
-    if (questions[questionIndex].comment) {
-        feedbackText += `<br><div class="comment">💡 ${questions[questionIndex].comment}</div>`;
+    if (question.comment) {
+        feedbackText += `<br><div class="comment">💡 ${question.comment}</div>`;
     }
     
     feedbackDiv.innerHTML = feedbackText;

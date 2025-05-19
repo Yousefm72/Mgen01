@@ -50,6 +50,16 @@ h1 {
     margin-bottom: 1rem;
     color: #333;
     font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.question h3::after {
+    content: attr(data-multiple);
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+    font-weight: normal;
 }
 
 .options {
@@ -66,6 +76,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .option:hover {
@@ -76,6 +87,14 @@ h1 {
 .option.selected {
     background-color: #e3f2fd;
     border-color: #1a73e8;
+}
+
+.option.selected::after {
+    content: '✓';
+    position: absolute;
+    left: 1rem;
+    color: #1a73e8;
+    font-weight: bold;
 }
 
 .feedback {
