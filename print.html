@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الشبكات - نسخة للطباعة</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #1a73e8;
+        }
+        .group {
+            margin-bottom: 30px;
+            page-break-inside: avoid;
+        }
+        .group-title {
+            background-color: #f0f2f5;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-right: 4px solid #1a73e8;
+            font-weight: bold;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            margin-right: 20px;
+        }
+        .option {
+            margin-bottom: 5px;
+        }
+        .option::before {
+            content: "○";
+            margin-left: 5px;
+        }
+        .image-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px;
+        }
+        @media print {
+            .no-print {
+                display: none;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+        .print-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .print-button:hover {
+            background-color: #1557b0;
+        }
+    </style>
+</head>
+<body>
+  
+    <div class="header">
+        <h1>Information and Communication Technology</h1>
+        <h1>تكنولوجيا المعلومات والاتصالات</h1>
+        <h1>ICT By Yousef Masri</h1>
+        <h1>مراجعة لامتحان الدبلوم</h1>
+    </div>
+
+    <div class="group">
+        <div class="group-title">مجموعة 1: أساسيات الشبكات والبروتوكولات</div>
+        <div class="question">
+            <div class="question-text">1. أي من البروتوكولات التالية يعتبر بروتوكولاً رئيسياً في الإنترنت؟ (يمكن اختيار أكثر من إجابة)</div>
+            <div class="options">
+                <div class="option">HTTP</div>
+                <div class="option">FTP</div>
+                <div class="option">TCP/IP</div>
+                <div class="option">SMTP</div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question-text">2. ما هو البروتوكول الذي يمكن توجيه رزم بيانات بين شبكات مختلفة؟</div>
+            <div class="options">
+                <div class="option">HTTP</div>
+                <div class="option">FTP</div>
+                <div class="option">IP</div>
+                <div class="option">SMTP</div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question-text">3. حسب اي عنوان يتعرف المفتاح (switch) على الأجهزة المرتبطة به؟</div>
+            <div class="options">
+                <div class="option">IP Address</div>
+                <div class="option">MAC Address</div>
+                <div class="option">Subnet Mask</div>
+                <div class="option">Default Gateway</div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question-text">4. الرسالة التي يقوم ببثها الحاسوب الخادم DHCP للحصول على عنوان هي</div>
+            <div class="options">
+                <div class="option">DHCP DISCOVER</div>
+                <div class="option">DHCP REQUEST</div>
+                <div class="option">DHCP OFFER</div>
+                <div class="option">DHCP ACK</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="group-title">مجموعة 2: عناوين IP و IPv6</div>
+        <div class="question">
+            <div class="question-text">5. أقوال تتطرّق إلى عنوان الـ IP التالي: 172.10.10.10/16</div>
+            <div class="options">
+                <div class="option">هو عنوان عام من الفئة B</div>
+                <div class="option">هو عنوان خاص من الفئة B</div>
+                <div class="option">هو عنوان عام من الفئة A</div>
+                <div class="option">هو عنوان خاص من الفئة A</div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question-text">6. أيّ عنوان من بين العناوين التالية هو عنوان APIPA</div>
+            <div class="options">
+                <div class="option">192.168.1.1</div>
+                <div class="option">169.254.1.1</div>
+                <div class="option">172.16.1.1</div>
+                <div class="option">10.0.0.1</div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question-text">7. أي من العناوين التالية هو عنوان IP خاص (Private IP)?</div>
+            <div class="options">
+                <div class="option">8.8.8.8</div>
+                <div class="option">192.168.1.1</div>
+                <div class="option">172.32.1.1</div>
+                <div class="option">200.1.1.1</div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question-text">8. أي من العناوين التالية هو عنوان IPv6 صحيح؟</div>
+            <div class="options">
+                <div class="option">2001:0db8:85a3:0000:0000:8a2e:0370:7334</div>
+                <div class="option">192.168.1.1</div>
+                <div class="option">2001:0db8:85a3:0000:0000:8a2e:0370</div>
+                <div class="option">2001:0db8:85a3:0000:0000:8a2e:0370:7334:1234</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="group">
+        <div class="group-title">مجموعة 3: نموذج OSI والطبقات</div>
+        <div class="question">
+            <div class="question-text">9. كم عدد طبقات نموذج OSI؟</div>
+            <div class="options">
+                <div class="option">5 طبقات</div>
+                <div class="option">6 طبقات</div>
+                <div class="option">7 طبقات</div>
+                <div class="option">8 طبقات</div>
+            </div>
+        </div>
+        <div class="question">
+            <div class="question-text">10. أي من البروتوكولات التالية يعمل في طبقة التطبيق (Application Layer)؟</div>
+            <div class="options">
+                <div class="option">TCP</div>
+                <div class="option">HTTP</div>
+                <div class="option">IP</div>
+                <div class="option">ARP</div>
+            </div>
+        </div>
+        <!-- باقي أسئلة نموذج OSI -->
+    </div>
+
+    <div class="group">
+        <div class="group-title">مجموعة 4: المنافذ (Ports) والبروتوكولات</div>
+        <div class="question">
+            <div class="question-text">11. ما هو رقم المنفذ (Port) المستخدم لبروتوكول HTTP؟</div>
+            <div class="options">
+                <div class="option">21</div>
+                <div class="option">25</div>
+                <div class="option">80</div>
+                <div class="option">443</div>
+            </div>
+        </div>
+        <!-- باقي أسئلة المنافذ -->
+    </div>
+
+    <div class="group">
+        <div class="group-title">مجموعة 5: أوامر الراوتر والسويتش</div>
+        <div class="question">
+            <div class="question-text">12. أي من الأوامر التالية يستخدم لعرض جدول التوجيه في الراوتر؟</div>
+            <div class="options">
+                <div class="option">show ip route</div>
+                <div class="option">show route</div>
+                <div class="option">display route</div>
+                <div class="option">route table</div>
+            </div>
+        </div>
+        <!-- باقي أسئلة الراوتر والسويتش -->
+    </div>
+
+    <div class="group">
+        <div class="group-title">مجموعة 6: الأنظمة العددية</div>
+        <div class="question">
+            <div class="question-text">13. ما هو الرقم العشري (Decimal) المقابل للرقم الثنائي (Binary) 1010؟</div>
+            <div class="options">
+                <div class="option">8</div>
+                <div class="option">10</div>
+                <div class="option">12</div>
+                <div class="option">14</div>
+            </div>
+        </div>
+        <!-- باقي أسئلة الأنظمة العددية -->
+    </div>
+
+    <script>
+        // إضافة أرقام الأسئلة تلقائياً
+        document.addEventListener('DOMContentLoaded', function() {
+            let questionNumber = 1;
+            document.querySelectorAll('.question').forEach(question => {
+                const questionText = question.querySelector('.question-text');
+                const currentText = questionText.textContent;
+                questionText.textContent = `${questionNumber}. ${currentText.substring(currentText.indexOf('.') + 2)}`;
+                questionNumber++;
+            });
+        });
+    </script>
+</body>
+</html> 
